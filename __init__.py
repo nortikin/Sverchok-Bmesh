@@ -13,10 +13,11 @@ bl_info = {
 
 import sys
 import importlib
+import logging
 
 import nodeitems_utils
 
-from sverchok.utils.logging import info, debug
+#from sverchok.utils.sv_logging import info, debug
 from sverchok.ui.nodeview_space_menu import add_node_menu
 
 # make sverchok the root module name, (if sverchok dir not named exactly "sverchok")
@@ -27,6 +28,8 @@ from sverchok_bmesh import icons
 from sverchok_bmesh import settings
 from sverchok_bmesh import examples
 from sverchok_bmesh.utils import show_welcome
+
+logger = logging.getLogger('sverchok.bmesh')
 
 def nodes_index():
     return [("Bmesh", [
@@ -84,7 +87,7 @@ reload_event = False
 
 if "bpy" in locals():
     reload_event = True
-    info("Reloading sverchok-bmesh...")
+    logger.info("Reloading sverchok-bmesh...")
 
 import bpy
 
@@ -92,7 +95,7 @@ def register_nodes():
     node_modules = make_node_list()
     for module in node_modules:
         module.register()
-    info("Registered %s nodes", len(node_modules))
+    logger.info("Registered %s nodes", len(node_modules))
 
 def unregister_nodes():
     global imported_modules
@@ -105,13 +108,13 @@ our_menu_classes = []
 def reload_modules():
     global imported_modules
     for im in imported_modules:
-        debug("Reloading: %s", im)
+        logger.debug("Reloading: %s", im)
         importlib.reload(im)
 
 def register():
     global our_menu_classes
 
-    debug("Registering Sverchok-Bmesh")
+    logger.debug("Registering Sverchok-Bmesh")
 
     add_node_menu.register()
     settings.register()

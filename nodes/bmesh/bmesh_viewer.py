@@ -9,7 +9,7 @@ from sverchok.utils.nodes_mixins.generating_objects import SvMeshData, SvViewerN
 from sverchok.utils.handle_blender_data import correct_collection_length
 from sverchok.utils.nodes_mixins.show_3d_properties import Show3DProperties
 import sverchok.utils.meshes as me
-from sverchok.utils.logging import fix_error_msg
+#from sverchok.utils.logging import fix_error_msg
 
 
 class SvBMeshViewer(Show3DProperties, SvViewerNode, SverchCustomTreeNode, bpy.types.Node):
