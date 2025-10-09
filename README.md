@@ -9,3 +9,6 @@
   - Possibilities：Hundreds of functions allow you to quickly and conveniently create complex functions for sverchok
 ## Installation
 Install Sverchok-Bmesh as you would install sverchok.
+
+## Author   
+https://github.com/vkter
